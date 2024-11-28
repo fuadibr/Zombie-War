@@ -13,10 +13,12 @@ public class PlayerMovement3rdPerson : MonoBehaviour
     public Transform spawnPoint;
 
     private Rigidbody rb;
+    private Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -26,6 +28,15 @@ public class PlayerMovement3rdPerson : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
         transform.position += transform.forward * Time.deltaTime * speed * moveZ;
         transform.Rotate(rotateX * rotateSpeed * Vector3.up );
+
+        if(moveZ > 0)
+        {
+            anim.SetBool("isRunning",true);
+        }
+        else
+        {
+            anim.SetBool("isRunning",false);
+        }
 
         if(Input.GetButtonDown("Jump"))
         {
@@ -39,6 +50,8 @@ public class PlayerMovement3rdPerson : MonoBehaviour
                 Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
             }
         }
+
+        
 
     }
 
