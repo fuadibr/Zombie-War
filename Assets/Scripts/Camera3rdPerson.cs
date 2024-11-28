@@ -3,15 +3,15 @@ using UnityEngine;
 public class Camera3rdPerson : MonoBehaviour
 {
     public Transform target;
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+    public float smoothSpeed = 5.5f;
+    private Vector3 offset;
 
-    void Awake()
+    void Start()
     {
         offset = transform.position - target.position;
     }
 
-    void LateUpdate()
+    void Update()
     {
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position,desiredPosition,smoothSpeed);

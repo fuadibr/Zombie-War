@@ -1,31 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement3rdPerson : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float rotateSpeed = 1.5f;
-    public float gravity = -9.81f;
+    public float rotateSpeed = 0.5f;
+    public float jumpForce = 150.0f;
+    public int rockQty = 0;
 
-    private CharacterController charControl;
-    private Vector3 velocity;
+    public Text inventoryText;
+    public GameObject projectile;
+    public Transform spawnPoint;
+
+    private Rigidbody rb;
 
     void Start()
     {
-        charControl = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        inventoryText.text = "Rock Quantity : " + rockQty;
         float rotateX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
-        Vector3 move = transform.forward * moveZ;
-        charControl.Move(move * speed * Time.deltaTime);
-
+        transform.position += transform.forward * Time.deltaTime * speed * moveZ;
         transform.Rotate(rotateX * rotateSpeed * Vector3.up );
 
-        velocity.y += gravity * Time.deltaTime;
-        charControl.Move(velocity * Time.deltaTime);
+        if(Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            if(rockQty > 0)
+            {
+                Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
+            }
+        }
+
     }
+
+    public void AddRock(int qty)
+    {
+        rockQty += qty;
+    }
+
 }
