@@ -9554,7 +9554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1026928822
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10362,7 +10362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9c620cb7a529f8844876bddd54024a6f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9c620cb7a529f8844876bddd54024a6f, type: 3}
       propertyPath: m_TagString
@@ -15510,7 +15510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9c620cb7a529f8844876bddd54024a6f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1285705782834317151, guid: 9c620cb7a529f8844876bddd54024a6f, type: 3}
       propertyPath: m_Enabled
@@ -15580,7 +15580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   gravity: -9.81
-  jumpHeight: 1
+  jumpHeight: 6
 --- !u!1001 &2035437182
 PrefabInstance:
   m_ObjectHideFlags: 0
